@@ -240,7 +240,7 @@
 	{
 		var result = [],
 			currentNode = rootNode.firstChild;
-		
+
 		while (currentNode)
 		{
 			result = result.concat(extractNodeValues(currentNode, nodeCallback, useIdIfEmptyName, getDisabled));
@@ -290,7 +290,7 @@
 	function getFieldValue(fieldNode, getDisabled)
 	{
 		if (fieldNode.disabled && !getDisabled) return null;
-		
+
 		switch (fieldNode.nodeName) {
 			case 'INPUT':
 			case 'TEXTAREA':
@@ -309,7 +309,9 @@
 					case 'image':
 						return '';
 						break;
-
+					case 'number':
+						return parseFloat(fieldNode.value);
+						break;
 					default:
 						return fieldNode.value;
 						break;
